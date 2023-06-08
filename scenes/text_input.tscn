@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b8t1i7spvtyab"]
+
+[node name="TextInput" type="LineEdit"]
+offset_right = 140.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 36
+placeholder_text = "text..."
+expand_to_text_length = true
+shortcut_keys_enabled = false
+caret_blink = true
+caret_blink_interval = 0.5

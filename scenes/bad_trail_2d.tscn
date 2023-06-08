@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyf65g0yes1fh"]
+
+[ext_resource type="Script" path="res://scripts/BadTrail2D.gd" id="1_xdsuo"]
+
+[node name="BadTrail2D" type="Line2D"]
+script = ExtResource("1_xdsuo")
