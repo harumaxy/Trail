@@ -25,8 +25,6 @@ point_count = 2
 [node name="TrackCursor" type="Node"]
 script = SubResource("GDScript_16cm7")
 
-[node name="Cursor" parent="." instance=ExtResource("1_jjtd2")]
-
 [node name="Trail2D" type="Line2D" parent="."]
 width = 50.0
 width_curve = SubResource("Curve_cpmmm")
@@ -41,3 +39,5 @@ width_curve = SubResource("Curve_m6i6n")
 end_cap_mode = 2
 antialiased = true
 script = ExtResource("3_6m5sa")
+
+[node name="Cursor" parent="." instance=ExtResource("1_jjtd2")]

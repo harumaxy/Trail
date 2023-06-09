@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dfuhag2a6o02t"]
 
-[ext_resource type="PackedScene" uid="uid://bm2p4dfye26s4" path="res://scenes/player.tscn" id="1_5jbfa"]
-[ext_resource type="Script" path="res://scripts/Trail2D.gd" id="2_inuwd"]
-[ext_resource type="Script" path="res://scripts/Cursor.gd" id="3_agbv0"]
+[ext_resource type="Script" path="res://scripts/Trail2D.gd" id="1_yix8n"]
+[ext_resource type="PackedScene" uid="uid://bm2p4dfye26s4" path="res://scenes/player.tscn" id="2_6q1qk"]
+[ext_resource type="Script" path="res://scripts/Cursor.gd" id="3_pspm1"]
 
 [sub_resource type="Curve" id="Curve_35421"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -11,12 +11,12 @@ point_count = 2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1n5f"]
 size = Vector2(1000, 200)
 
-[node name="World" type="Node"]
+[node name="Level" type="Node"]
 
 [node name="Trail2D" type="Line2D" parent="." node_paths=PackedStringArray("target")]
 width = 30.0
 width_curve = SubResource("Curve_35421")
-script = ExtResource("2_inuwd")
+script = ExtResource("1_yix8n")
 target = NodePath("../Player")
 
 [node name="Floor" type="StaticBody2D" parent="."]
@@ -34,9 +34,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Player" parent="." instance=ExtResource("1_5jbfa")]
+[node name="Player" parent="." instance=ExtResource("2_6q1qk")]
 
 [node name="Projectiles" type="Node" parent="."]
 
 [node name="Cursor" type="Node2D" parent="."]
-script = ExtResource("3_agbv0")
+script = ExtResource("3_pspm1")

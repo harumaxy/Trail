@@ -11,13 +11,21 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _process(delta):
   if Input.is_action_just_pressed("fire"):
-    var bullet = Bullet.instantiate()
-    var aim_dir = self.global_position.direction_to(get_global_mouse_position()).normalized()
-    bullet.global_position = self.global_position + aim_dir * 130
-    bullet.global_rotation = aim_dir.angle()
-    bullet.linear_velocity = bullet.linear_velocity.rotated(aim_dir.angle())
+    fire()
+
+func fire():
+  var bullet = Bullet.instantiate()
+  var aim_dir = self.global_position.direction_to(get_global_mouse_position()).normalized()
+  bullet.global_position = self.global_position + aim_dir * 130
+  bullet.global_rotation = aim_dir.angle()
+  bullet.linear_velocity = bullet.linear_velocity.rotated(aim_dir.angle())
+  
+  var projectiles_container = get_tree().root.get_node("Level/Projectiles")
+  if projectiles_container:
+    projectiles_container.add_child(bullet)
+  else:
     get_tree().root.add_child(bullet)
-    
+  
     
   
 
