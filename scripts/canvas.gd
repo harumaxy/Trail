@@ -46,6 +46,7 @@ func change_line_width(diff: int):
   cursor.radius = line_width / 2
         
 func on_LMB_pressed():
+  get_viewport().gui_release_focus()
   var line := Trail2D.make(cursor, false, line_width, color)
   items.add_child(line)
   active_item = line
