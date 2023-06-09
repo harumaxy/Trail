@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cv0p8u58pgarr"]
+[gd_scene load_steps=6 format=3 uid="uid://cv0p8u58pgarr"]
 
 [ext_resource type="PackedScene" uid="uid://r4j7kqqeimig" path="res://scenes/cursor.tscn" id="1_jjtd2"]
 [ext_resource type="Script" path="res://scripts/Trail2D.gd" id="2_chyou"]
 [ext_resource type="Script" path="res://scripts/BadTrail2D.gd" id="3_6m5sa"]
-[ext_resource type="PackedScene" uid="uid://dyf65g0yes1fh" path="res://scenes/bad_trail_2d.tscn" id="4_nsx05"]
 
 [sub_resource type="Curve" id="Curve_cpmmm"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -20,18 +19,16 @@ point_count = 2
 [node name="Trail2D" type="Line2D" parent="." node_paths=PackedStringArray("target")]
 width = 50.0
 width_curve = SubResource("Curve_cpmmm")
+end_cap_mode = 2
 antialiased = true
 script = ExtResource("2_chyou")
+dissolve_time = 0.4
 target = NodePath("../Cursor")
 
 [node name="BadTrail2D" type="Line2D" parent="." node_paths=PackedStringArray("target")]
-visible = false
-points = PackedVector2Array(631, 301)
+position = Vector2(200, 2.08165e-12)
 width = 50.0
 width_curve = SubResource("Curve_m6i6n")
+end_cap_mode = 2
 script = ExtResource("3_6m5sa")
-target = NodePath("../Cursor")
-
-[node name="BadTrail2D2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_nsx05")]
-visible = false
 target = NodePath("../Cursor")
