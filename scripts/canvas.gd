@@ -46,12 +46,8 @@ func change_line_width(diff: int):
   cursor.radius = line_width / 2
         
 func on_LMB_pressed():
-  var line := Trail2D.new()
-  line.dissolve = false
-  line.width = line_width
-  line.default_color = color
+  var line := Trail2D.make(cursor, false, line_width, color)
   items.add_child(line)
-  line.target = cursor
   active_item = line
   undo_stack = [] # clear undo
 
