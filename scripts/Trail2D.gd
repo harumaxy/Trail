@@ -1,11 +1,9 @@
 extends Line2D
 class_name Trail2D
 
-@export_range(0.01, 0.1, 0.01) var tick_rate := 0.01
 @export var min_distance := 3 #px
 @export var dissolve := true
 @export_range(0.1, 1.0, 0.1) var dissolve_time := .5
-@onready var tick_tween = create_tween()
 
 
 @export var target: Node2D = null:

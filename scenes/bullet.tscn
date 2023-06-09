@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://baq8qkrflme6d"]
+
+[ext_resource type="Script" path="res://scripts/Bullet.gd" id="1_h065a"]
+[ext_resource type="Texture2D" uid="uid://kexseyk1mgjh" path="res://icon.svg" id="2_yftfw"]
+[ext_resource type="Script" path="res://scripts/Trail2D.gd" id="3_17g8h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cra10"]
+
+[sub_resource type="Curve" id="Curve_pkatu"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Bullet" type="RigidBody2D"]
+position = Vector2(537, 165)
+linear_velocity = Vector2(1000, 2.08165e-12)
+script = ExtResource("1_h065a")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cra10")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_yftfw")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Trail2D" type="Line2D" parent="."]
+width = 30.0
+width_curve = SubResource("Curve_pkatu")
+script = ExtResource("3_17g8h")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

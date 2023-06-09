@@ -9,7 +9,7 @@ var cursor_color := Color.DEEP_SKY_BLUE:
   set(_c):
     cursor_color = _c
     queue_redraw()
-var circle_width := 10 # px
+var circle_width := 3 # px
 var circle_resolution = 60
 
 func _draw():

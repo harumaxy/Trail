@@ -4,6 +4,16 @@
 [ext_resource type="Script" path="res://scripts/Trail2D.gd" id="2_chyou"]
 [ext_resource type="Script" path="res://scripts/BadTrail2D.gd" id="3_6m5sa"]
 
+[sub_resource type="GDScript" id="GDScript_16cm7"]
+script/source = "extends Node
+
+
+func _ready():
+  await get_tree().create_timer(0.1).timeout
+  $Trail2D.target = $Cursor
+  $BadTrail2D.target = $Cursor
+"
+
 [sub_resource type="Curve" id="Curve_cpmmm"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -12,33 +22,22 @@ point_count = 2
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.984895, 0.988815), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_ivxr6"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.271805, 0.952268), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
-
 [node name="TrackCursor" type="Node"]
+script = SubResource("GDScript_16cm7")
 
 [node name="Cursor" parent="." instance=ExtResource("1_jjtd2")]
 
-[node name="Trail2D" type="Line2D" parent="." node_paths=PackedStringArray("target")]
+[node name="Trail2D" type="Line2D" parent="."]
 width = 50.0
 width_curve = SubResource("Curve_cpmmm")
 end_cap_mode = 2
 antialiased = true
 script = ExtResource("2_chyou")
-dissolve_time = 0.7
-target = NodePath("../Cursor")
 
-[node name="BadTrail2D" type="Line2D" parent="." node_paths=PackedStringArray("target")]
+[node name="BadTrail2D" type="Line2D" parent="."]
 position = Vector2(500, 2.08165e-12)
 width = 50.0
 width_curve = SubResource("Curve_m6i6n")
 end_cap_mode = 2
 antialiased = true
 script = ExtResource("3_6m5sa")
-target = NodePath("../Cursor")
-
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(236, 395, 359, 383, 418, 380, 421, 377, 436, 381, 444, 384, 456, 377, 459, 384, 461, 384, 467, 381, 470, 378, 471, 380, 476, 380, 478, 377, 482, 373, 483, 371, 485, 373, 485, 377, 485, 380, 486, 382, 493, 384, 496, 379, 497, 376, 502, 371, 507, 375, 508, 379, 509, 381, 512, 379, 512, 377, 523, 368, 525, 375, 525, 380, 532, 382, 533, 378, 534, 376, 538, 373, 542, 376, 543, 378, 553, 380, 556, 380, 558, 381, 560, 383, 564, 384, 565, 380, 569, 383, 570, 381, 573, 383, 574, 381, 575, 388, 613, 386, 544, 455, 446, 489, 397, 481, 358, 473, 338, 483, 328, 503, 349, 511, 398, 519, 443, 524, 499, 516, 537, 509, 438, 410)
-width = 30.0
-width_curve = SubResource("Curve_ivxr6")

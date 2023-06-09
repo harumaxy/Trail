@@ -3,10 +3,23 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+const Bullet = preload("res://scenes/bullet.tscn")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+
+func _process(delta):
+  if Input.is_action_just_pressed("fire"):
+    var bullet = Bullet.instantiate()
+    var aim_dir = self.global_position.direction_to(get_global_mouse_position()).normalized()
+    bullet.global_position = self.global_position + aim_dir * 130
+    bullet.global_rotation = aim_dir.angle()
+    bullet.linear_velocity = bullet.linear_velocity.rotated(aim_dir.angle())
+    get_tree().root.add_child(bullet)
+    
+    
+  
 
 func _physics_process(delta):
   # Add the gravity.
