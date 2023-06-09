@@ -1,6 +1,5 @@
 extends Node
 
-const Trail2D = preload("res://scenes/trail_2d.tscn")
 const TextInput = preload("res://scenes/text_input.tscn")
 
 @onready var cursor := %Cursor as Cursor
@@ -47,7 +46,7 @@ func change_line_width(diff: int):
   cursor.radius = line_width / 2
         
 func on_LMB_pressed():
-  var line := Trail2D.instantiate()
+  var line := Trail2D.new()
   line.dissolve = false
   line.width = line_width
   line.default_color = color
